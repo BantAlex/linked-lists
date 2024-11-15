@@ -1,9 +1,10 @@
+require_relative 'node'
 class LinkedList #Whole List
 
   def initialize
     head = nil
     tail = nil
-    seize = 0
+    size = 0
   end
 
   def append(value) #Add a node containing @value to the start
