@@ -9,7 +9,7 @@ class LinkedList #Whole List
     self.size = 0
   end
 
-  def append(value) #Add a node containing @value to the end
+  def append(value) #Add a node containing "value" to the end
     if @head.value == nil
       @head = Node.new(value)
       @tail = @head
@@ -17,7 +17,8 @@ class LinkedList #Whole List
       @head.next_node = Node.new(value)
       @tail = @head.next_node
     else
-      @tail = Node.new(value)
+      @tail.next_node = Node.new(value)
+      @tail = @tail.next_node
     end
     binding.pry
     @size = @size + 1
