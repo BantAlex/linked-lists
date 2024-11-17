@@ -37,18 +37,6 @@ class LinkedList #Whole List
     @tail.index = @tail.index + 1 #The loop stops at the tail and that means that the tail index won't be updated.
   end
 
-  def size #Return the total number of nodes in the list
-    @size
-  end
-
-  def head #Return the first node on the list
-    @head
-  end
-
-  def tail #Return the last node on the list
-    @tail
-  end
-
   def at(index) #Return the node at index
     return @tail.value if index == @size #The loop skips the tail
 
@@ -92,10 +80,6 @@ class LinkedList #Whole List
     end
   end
 
-  def to_s #Represent LinkedList objects as strings
-    "#{@value}"
-  end
-
   def insert_at(value,index) #Insert a new node of value at index
 
   end
@@ -103,4 +87,9 @@ class LinkedList #Whole List
   def remove_at(index) #Remove the node at given index
 
   end
+
+  def to_s #Represent LinkedList objects as strings
+    "#{@value}"
+  end
+
 end
