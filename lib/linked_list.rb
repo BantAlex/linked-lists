@@ -77,12 +77,19 @@ class LinkedList #Whole List
       return true if current_node.value == value
       current_node = current_node.next_node
     end
+
   return false unless value == @tail.value
   return true
   end
 
-  def find(value) #Return index of value and nil if it's not existant
-    self.at()
+  def find(value) #Return index of value and nil if it's not existant#?Maybe I can use self.contains? after refactoring?
+    return @tail.index if @tail.value == value
+
+    current_node = @head
+    while current_node.next_node != nil #?Maybe current_node != @tail?
+      return current_node.index if current_node.value == value
+      current_node = current_node.next_node
+    end
   end
 
   def to_s #Represent LinkedList objects as strings
