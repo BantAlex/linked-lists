@@ -3,30 +3,31 @@ require 'pry'
 require 'pry-byebug'
 class LinkedList #Whole List
   attr_accessor :head, :tail,:size
+
   def initialize
     self.head = Node.new()
     self.tail = Node.new()
-    self.size = 0
+    self.size = 0 #Make this -1 for 0-based indexing
   end
 
   def append(value) #Add a node containing "value" to the end
+    @size = @size + 1
     if @head.value == nil
-      @head = Node.new(value)
+      @head = Node.new(value,nil,size)
       @tail = @head
     elsif @head.next_node == nil
-      @head.next_node = Node.new(value)
+      @head.next_node = Node.new(value,nil,size)
       @tail = @head.next_node
     else
-      @tail.next_node = Node.new(value)
+      @tail.next_node = Node.new(value,nil,size)
       @tail = @tail.next_node
     end
     # binding.pry
-    @size = @size + 1
   end
 
   def prepend(value) #Add a node containing @value to the start
-    @head = Node.new(value,@head)
     @size = @size + 1
+    @head = Node.new(value,@head,@size)
   end
 
   def size #Return the total number of nodes in the list
@@ -55,6 +56,10 @@ class LinkedList #Whole List
 
   def find(value) #Return index of value and nil if it's not existant
 
+  end
+
+  def to_s #Represent LinkedList objects as strings
+    "#{@value}"
   end
 
   def insert_at(value,index) #Insert a new node of value at index

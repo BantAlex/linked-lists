@@ -14,3 +14,8 @@ list.append('turtle')
  #( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> nil
 list.prepend('boi')
  #( boi) ->( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> nil
+binding.pry
+list.pop
+ #( boi) ->( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> nil
+binding.pry
+p 'hi'
