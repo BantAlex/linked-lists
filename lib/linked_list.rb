@@ -64,7 +64,7 @@ class LinkedList #Whole List
     @size = @size - 1
 
     current_node = @head
-    while current_node.next_node != nil
+    while current_node.next_node != nil #?Maybe current_node != @tail?
       @tail = current_node if current_node.next_node.next_node == nil
       current_node = current_node.next_node
     end
@@ -72,7 +72,13 @@ class LinkedList #Whole List
   end
 
   def contains?(value) #Return true if value is in the list
-
+    current_node = @head
+    while current_node.next_node != nil #?Maybe current_node != @tail?
+      return true if current_node.value == value
+      current_node = current_node.next_node
+    end
+  return false unless value == @tail.value
+  return true
   end
 
   def find(value) #Return index of value and nil if it's not existant
