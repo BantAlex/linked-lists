@@ -20,7 +20,7 @@ class LinkedList #Whole List
       @tail.next_node = Node.new(value)
       @tail = @tail.next_node
     end
-    binding.pry
+    # binding.pry
     @size = @size + 1
   end
 

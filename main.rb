@@ -12,3 +12,5 @@ list.append('hamster')
 list.append('snake')
 list.append('turtle')
  #( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> nil
+list.prepend('boi')
+ #( boi) ->( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> nil
