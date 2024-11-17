@@ -29,7 +29,7 @@ class LinkedList #Whole List
     @head = Node.new(value,@head,0) #0 Index because the loop adds one as it goes. (-1 for -based indexing)
 
     current_node = @head
-    while current_node.next_node != nil
+    while current_node.next_node != nil #?Maybe current_node != @tail?
       current_node.index = current_node.index + 1
       current_node = current_node.next_node
     end
@@ -50,10 +50,10 @@ class LinkedList #Whole List
   end
 
   def at(index) #Return the node at index
-    return tail.value if index == @size #The loop skips the tail.
+    return @tail.value if index == @size #The loop skips the tail
 
     current_node = @head
-    while current_node.next_node != nil
+    while current_node.next_node != nil #?Maybe current_node != @tail?
       return current_node.value if current_node.index == index
       current_node = current_node.next_node
     end
@@ -61,7 +61,14 @@ class LinkedList #Whole List
   end
 
   def pop #Remove the last element from the list
-    @tail = Node.new() #???
+    @size = @size - 1
+
+    current_node = @head
+    while current_node.next_node != nil
+      @tail = current_node if current_node.next_node.next_node == nil
+      current_node = current_node.next_node
+    end
+    current_node,@tail.next_node = nil
   end
 
   def contains?(value) #Return true if value is in the list
