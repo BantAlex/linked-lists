@@ -1,6 +1,6 @@
 require_relative 'node'
 require 'pry'
-require 'byebug'
+require 'pry-byebug'
 class LinkedList #Whole List
   attr_accessor :head, :tail,:size
   def initialize
@@ -10,16 +10,21 @@ class LinkedList #Whole List
   end
 
   def append(value) #Add a node containing @value to the end
-    @ap_node = Node.new(value)
-    @head = @ap_node if @head.value == nil
-    @tail = @ap_node
-    # binding.pry
+    if @head.value == nil
+      @head = Node.new(value)
+      @tail = @head
+    elsif @head.next_node == nil
+      @head.next_node = Node.new(value)
+      @tail = @head.next_node
+    else
+      @tail = Node.new(value)
+    end
+    binding.pry
     @size = @size + 1
   end
 
   def prepend(value) #Add a node containing @value to the start
-    @pre_node = Node.new(value,@head)
-    @head = value
+    @head = Node.new(value,@head)
     @size = @size + 1
   end
 
@@ -40,7 +45,7 @@ class LinkedList #Whole List
   end
 
   def pop #Remove the last element from the list
-
+    @tail = Node.new() #???
   end
 
   def contains?(value) #Return true if value is in the list
