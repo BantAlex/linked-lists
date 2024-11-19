@@ -8,6 +8,7 @@ class LinkedList #Whole List
     self.head = Node.new()
     self.tail = Node.new()
     self.size = 0 #Make this -1 for 0-based indexing. Needs to happen on #prepend as well
+
   end
 
   def append(value) #Add a node containing "value" to the end
@@ -81,7 +82,29 @@ class LinkedList #Whole List
   end
 
   def insert_at(value,index) #Insert a new node of value at index
+    @found = false
+    return "Just use append..." if index == @size
+    return "Just use prepend..." if index == 1
+    return "That's not a correct index" if index > @size || index < 1
+    @current_tail_value = @tail.value
 
+    current_node = @head
+    while current_node.next_node != nil #?Maybe current_node != @tail?
+    binding.pry
+      if @found
+        @next_node_value = current_node.next_node.value #holds parrot
+        current_node.next_node.value =  @node_value #makes dog next to dog
+        @node_value = @next_node_value
+      elsif current_node.index == index
+        @node_value = current_node.next_node.value #holds cat
+        current_node.next_node.value =  current_node.value #makes cat into dog
+        current_node.value = value #makes dog into value
+        @found = true
+      end
+      current_node = current_node.next_node
+    end
+
+    self.append(@current_tail_value)
   end
 
   def remove_at(index) #Remove the node at given index
