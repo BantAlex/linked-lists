@@ -90,7 +90,6 @@ class LinkedList #Whole List
 
     current_node = @head
     while current_node.next_node != nil #?Maybe current_node != @tail?
-    binding.pry
       if @found
         @next_node_value = current_node.next_node.value #holds parrot
         current_node.next_node.value =  @node_value #makes dog next to dog
@@ -127,7 +126,16 @@ class LinkedList #Whole List
   end
 
   def to_s #Represent LinkedList objects as strings
-    "#{@value}"
+    result = ""
+
+    current_node = @head
+    while current_node
+      result += "(#{current_node.value})"
+      result += " => " if current_node.next_node
+
+      current_node = current_node.next_node
+    end
+  result
   end
 
 end
