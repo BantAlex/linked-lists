@@ -14,5 +14,5 @@ list.append('turtle')
  #( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> nil
 list.prepend('boi')
  #( boi) ->( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> nil
-list.insert_at("bois",2)
+ binding.pry
 p 'hi'

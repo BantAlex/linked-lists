@@ -108,7 +108,22 @@ class LinkedList #Whole List
   end
 
   def remove_at(index) #Remove the node at given index
+    return "Just use pop..." if index == @size
+    return "No such index is avaiable" if index > @size
+    @found = false
 
+    current_node = @head
+    while current_node.next_node != nil #?Maybe current_node != @tail?
+      if @found
+        current_node.value = current_node.next_node.value
+      elsif current_node.index == index
+        current_node.value = current_node.next_node.value
+        @found = true
+      end
+
+      current_node = current_node.next_node
+    end
+    self.pop()
   end
 
   def to_s #Represent LinkedList objects as strings
